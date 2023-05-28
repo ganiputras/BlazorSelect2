@@ -1,0 +1,51 @@
+﻿@page "/dropdownsingle"
+
+@using BlazorSelect2.Data
+<h3>Select2 Single</h3>
+
+<EditForm Model="Mdl">
+    <div class="card">
+        <div class="card-body">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="" class="col-form-label">Category</label>
+                </div>
+                <div class="col-2">
+                    <DropdownSelect @bind-Value="Mdl.CategoryId"
+                                    Id="dd1"
+                                    DataSource="Categories"
+                                    EmptyText="-NOTSET-"
+                                    Css="form-select form-select-sm" />
+                </div>
+                <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text ">
+                        <code>  Selected= <b> @Mdl.CategoryId</b></code>
+                    </span>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</EditForm>
+
+
+
+
+@code {
+
+    internal Plant Mdl = new();
+    internal ICollection<KeyValuePair<string, string>>? Categories { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var list = new List<KeyValuePair<string, string>>();
+        for (int i = 0; i < 5; i++)
+        {
+            list.Add(new KeyValuePair<string, string>($"cat{i}", $"Category {i}"));
+        }
+
+        Categories = list;
+    }
+}

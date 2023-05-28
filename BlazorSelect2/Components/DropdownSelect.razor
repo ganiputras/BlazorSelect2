@@ -1,0 +1,24 @@
+﻿@typeparam TValue
+@inherits InputBase<TValue>
+
+<select id="@Id" class="select2 @Css">
+    <option @key="null" value="null">@EmptyText</option>
+    @if (DataSource != null)
+    {
+        foreach (var item in DataSource)
+        {
+            if (item.Key == Value?.ToString())
+            {
+                <option @key="@item.Key" value="@item.Key" selected="selected">
+                    @((MarkupString)item.Value)
+                </option>
+            }
+            else
+            {
+                <option @key="@item.Key" value="@item.Key">
+                    @((MarkupString)item.Value)
+                </option>
+            }
+        }
+    }
+</select>
