@@ -1,0 +1,45 @@
+﻿@page "/Select2Stackoferflow"
+@using BlazorSelect2.Data
+@using Newtonsoft.Json
+
+
+<h3>Select2 Bootstrap Test </h3>
+<p>example from stack overflow answer</p>
+<a href="https://stackoverflow.com/questions/59123707/blazor-jquery-select2-two-way-binding/59336894#59336894">Question Select2 in Stackoferflow </a>
+<br />
+<br />
+
+<EditForm Model="Mdl">
+    <br/>
+    <DropdownSelectTest @bind-Value="Mdl.CategoryId"
+                        Id="Cat1"
+                        Label="Category"
+                        Required="true"
+                        DataSource="Categories"/>
+
+</EditForm>
+<br/>
+<br/>
+    Result = @JsonConvert.SerializeObject(Mdl);
+
+@code
+{
+    internal Plant Mdl = new();
+    internal ICollection<KeyValuePair<string, string>>? Categories { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        var list = new List<KeyValuePair<string, string>>();
+        for (int i = 0; i < 5; i++)
+        {
+            list.Add(new KeyValuePair<string, string>($"cat{i}", $"Category {i}"));
+        }
+
+        Categories = list;
+    }
+
+
+}
+

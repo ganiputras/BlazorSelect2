@@ -1,0 +1,40 @@
+﻿@typeparam TValue
+@inherits InputBase<TValue>
+@if (!string.IsNullOrWhiteSpace(Label))
+{
+    <label class="form-control-label" for="@Id">
+        @Label
+        @if (Required)
+        {
+            <font color="red">(*)</font>
+        }
+    </label>
+}
+else
+{
+    <LabelFor FieldIdentifier="FieldIdentifier"></LabelFor>
+}
+<select id="@Id" class="form-control select2" style="width: 100%;">
+    <option @key="null" value="null">--- NONE ---</option>
+    @if (DataSource != null)
+    {
+        foreach (var item in DataSource)
+        {
+            if (item.Key == Value?.ToString())
+            {
+                <option @key="@item.Key" value="@item.Key" selected="selected">
+                    @((MarkupString)item.Value)
+                </option>
+            }
+            else
+            {
+                <option @key="@item.Key" value="@item.Key">
+                    @((MarkupString)item.Value)
+                </option>
+            }
+        }
+    }
+</select>
+<div class="form-control-validation">
+    <CustomValidationMessage Field="FieldIdentifier" TValue="string"/>
+</div>

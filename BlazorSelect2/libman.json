@@ -1,0 +1,22 @@
+{
+    "version": "1.0",
+    "defaultProvider": "cdnjs",
+    "libraries": [
+        {
+            "library": "bootstrap@5.2.3",
+            "destination": "wwwroot/lib/bootstrap/"
+        },
+        {
+            "library": "select2@4.0.13",
+            "destination": "wwwroot/lib/select2/"
+        },
+        {
+            "library": "select2-bootstrap-5-theme@1.3.0",
+            "destination": "wwwroot/lib/select2-bootstrap-5-theme/"
+        },
+        {
+            "library": "jquery@3.6.4",
+            "destination": "wwwroot/lib/jquery/"
+        }
+    ]
+}
