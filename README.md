@@ -1,4 +1,12 @@
-# BlazorSelect2
+# I updated this tutorial in another project, I have implemented it for a real project. please see here
+# WidelyUsedBlazorComponents (NEW)
+## https://github.com/ganiputras/WidelyUsedBlazorComponents
+
+Sorry, there are still many shortcomings, I just want to learn.
+
+
+
+# BlazorSelect2 (OLD)
 How to implement select2 in blazor app?
 This is how to implement select2 in blazor app.
 
