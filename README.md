@@ -11,6 +11,14 @@
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/e2007f51-7928-47be-906e-7a718c348c0b)
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/90e01df2-1596-43b8-a8b4-6a0beb08a964)
 
+
+## EmptyText="false"
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/4f47d527-70ba-4d59-a392-ebf38fb1ec5c)
+
+## EmptyText="true"
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/47609a5e-3880-4ec2-9252-655de111616b)
+
+
 ### The tutorial on this project uses:
 - Blazor Web App
 - select2@4.0.13
