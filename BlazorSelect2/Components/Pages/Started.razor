@@ -77,6 +77,48 @@
     </code>
 </pre>
 </div>
+
+<div class="mb-2">
+    <b>dropdown-select2.js</b>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+
+window.select2Component = {
+    init: function (id) {
+        const fieldKey = '#' + id;
+        window.$(fieldKey).select2({
+            theme: 'bootstrap-5',
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            dropdownParent: $(fieldKey).parent()
+        });
+    },
+    onChange: function (id, dotnetHelper, nameFunc) {
+
+        const fieldKey = '#' + id;
+        window.$(fieldKey).on('select2:select', function (e) {
+            dotnetHelper.invokeMethodAsync(nameFunc, window.$(fieldKey).val());
+        });
+    },
+    onUnSelect: function (id, dotnetHelper, nameFunc) {
+
+        const fieldKey = '#' + id;
+        window.$(fieldKey).on('select2:unselect', function (e) {
+            dotnetHelper.invokeMethodAsync(nameFunc, window.$(fieldKey).val());
+        });
+    },
+    onReset: function(id) {
+        const fieldKey = '#' + id;
+        window.$(fieldKey).val('').trigger('change');
+    }
+}
+
+
+
+    </code>
+</pre>
+</div>
+
 <div class="mb-2">
     <b>DropdownSelect.razor</b>
     <p>No Id</p>
@@ -110,10 +152,41 @@
     </pre>
 </div>
 
+<div class="mb-2">
+    <b>DropdownMultiple.razor</b>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+            @dropdownmultiple
+    </code>
+    </pre>
+    <p>OnInitialized </p>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+        DropdownPlaceType = Data.DropdownPlaceType();
+
+        Place.TypesArray = new[] { "Room" };
+        Place.Types = string.Join(",", Place.TypesArray);
+
+        base.OnInitialized();
+    </code>
+    </pre>
+    <p>action </p>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+     private void SetTypes(string[] value)
+        {
+            Place.Types = string.Join(",", value);
+            Place.TypesArray = value;
+            StateHasChanged();
+        }
+    </code>
+    </pre>
+</div>
 @code {
 
     string apprazor = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"utf-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <base href=\"/\" />\r\n\r\n\r\n    <link rel=\"stylesheet\" href=\"lib/bootstrap-icons/font/bootstrap-icons.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/select2/css/select2.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/bootstrap/css/bootstrap.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"app.css\" />\r\n    <link rel=\"stylesheet\" href=\"BlazorSelect2.styles.css\" />\r\n\r\n    <link rel=\"icon\" type=\"image/png\" href=\"favicon.png\" />\r\n    <HeadOutlet @rendermode=\"InteractiveServer\" />\r\n</head>\r\n\r\n<body>\r\n\r\n    <script src=\"lib/jquery/jquery.min.js\"></script>\r\n    <script src=\"lib/bootstrap/js/bootstrap.bundle.min.js\"></script>\r\n    <script src=\"lib/select2/js/select2.full.min.js\"></script>\r\n\r\n    <Routes @rendermode=\"InteractiveServer\" />\r\n    <script src=\"_framework/blazor.web.js\"></script>\r\n</body>\r\n\r\n</html>\r\n";
     string dropdown1 = "   <DropdownSelect @bind-Value=\"Place.CountryId\" EventDropdown=\"OnCountry\"\r\n                   DataSource=\"DropdownCountry\"\r\n                   EmptyText=\"false\"\r\n                   Css=\"form-select form-select-sm\"/>";
     string dropdown1withId = "<DropdownSelect @bind-Value=\"Place.CountryId\" EventDropdown=\"OnCountry\"\r\n                DataSource=\"DropdownCountry\"\r\n                EmptyText=\"ALL\"\r\n                Id=\"CountryId\"\r\n                Css=\"form-select form-select-sm\" />";
+    string dropdownmultiple = "  <DropdownMultiple @bind-Value=\"Place.TypesArray\" EventDropdown=\"SetTypes\"\r\n                    DataSource=\"DropdownPlaceType\"\r\n                    EmptyText=\"false\"\r\n                    Css=\"form-select form-select-sm\"/>";
 
 }

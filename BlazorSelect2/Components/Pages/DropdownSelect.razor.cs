@@ -29,7 +29,10 @@ public partial class DropdownSelect<TValue> : InputSelect<TValue>, IAsyncDisposa
     {
         if (firstRender)
         {
+            //if use Razor Call Library Project
             //_jsRef = await Js.InvokeAsync<IJSObjectReference>("import", "./_content/WebApp.Shared/dropdown-select2.js");
+
+
             _jsRef = await Js.InvokeAsync<IJSObjectReference>("import", "./dropdown-select2.js");
             await Js.InvokeVoidAsync("select2Component.init", Id);
             await Js.InvokeVoidAsync("select2Component.onChange", Id, DotNetRef, "Change_Invokable");
