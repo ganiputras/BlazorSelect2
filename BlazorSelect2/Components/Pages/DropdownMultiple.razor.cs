@@ -32,7 +32,7 @@ public partial class DropdownMultiple<TValue> : InputSelect<TValue>, IAsyncDispo
     {
         if (firstRender)
         {
-            //if use Razor Call Library Project
+            //if use Razor Class Library Project
             //_jsRef = await Js.InvokeAsync<IJSObjectReference>("import", "./_content/WebApp.Shared/dropdown-select2.js");
            
             
