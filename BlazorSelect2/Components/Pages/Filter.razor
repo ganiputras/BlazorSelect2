@@ -76,9 +76,16 @@
 
     private async void OnCountry(string countryId)
     {
-        DropdownCity = Data.DropdownCityGetIso(countryId);
-        Place.CityId = DropdownCity.First().Key;
         Place.CountryId = countryId;
+        DropdownCity = Data.DropdownCityGetIso(countryId);
+        if (DropdownCity.Any())
+        {
+            Place.CityId = DropdownCity.FirstOrDefault().Key;
+        }
+        else
+        {
+            Place.CityId = string.Empty;
+        }
 
         await InvokeAsync(StateHasChanged);
     }
