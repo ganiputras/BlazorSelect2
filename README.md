@@ -15,7 +15,10 @@
 ## EmptyText="false"
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/4f47d527-70ba-4d59-a392-ebf38fb1ec5c)
 
-## EmptyText="true" or  EmptyText="ALL"
+## EmptyText="true"
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/8493213f-7ea9-428c-b560-a22fef3575ec)
+
+## EmptyText="ALL" your Text
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/47609a5e-3880-4ec2-9252-655de111616b)
 
 
