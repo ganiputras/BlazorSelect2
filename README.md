@@ -22,3 +22,11 @@
 - dropdown-select2.js
 - DropdownSelect.razor
 - DropdownMultiple.razor
+### Note
+if enum data is required to use callback (Dropdown Event)
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/f28fc37b-21f9-493e-9fd3-74009719060b)
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/2eadb1f9-1f9b-414a-914d-72f0aa0d8739)
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/9c985761-7981-481d-960e-b1c676d20487)
+
+
+
