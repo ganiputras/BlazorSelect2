@@ -6,5 +6,7 @@
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/413060f4-b309-419a-8ed8-1e2d31470dc2)
 
 ## Reset value
+![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/038e67ac-cd84-4bd1-8aa7-7a3963a14ab8)
+
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/e2007f51-7928-47be-906e-7a718c348c0b)
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/90e01df2-1596-43b8-a8b4-6a0beb08a964)
