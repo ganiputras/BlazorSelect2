@@ -1,0 +1,99 @@
+﻿@using BlazorSelect2.Data
+@using BlazorSelect2.Common
+@using Newtonsoft.Json
+
+<div class="card">
+    <div class="card-body user-select-none pb-1">
+        <div class="row">
+            <h5 class="card-title fw-bold">Example Form Search  </h5>
+            <p class="card-subtitle text-body-secondary">
+                example case if you want to set the dropdown value to empty
+            </p>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-3">
+                <div class="mb-3">
+                    <label class="form-label"> Country </label>
+                    <DropdownSelect @bind-Value="Place.CountryId" EventDropdown="OnCountry"
+                                    DataSource="DropdownCountry"
+                                    EmptyText="ALL"
+                                    Id="CountryId"
+                                    Css="form-select form-select-sm" />
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"> City </label>
+                    <DropdownSelect @bind-Value="Place.CityId"
+                                    DataSource="DropdownCity"
+                                    EmptyText="ALL"
+                                    Id="CityId"
+                                    Css="form-select form-select-sm" />
+
+                </div>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-sm btn-primary" @onclick="OnFilterReset">  Reset Filter</button>
+            </div>
+            <div class="col-6">
+                <code>
+                    @(JsonConvert.SerializeObject(Place))
+                </code>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@code
+{
+    [SupplyParameterFromForm] private TbPlace Place { get; set; } = new();
+
+    private Dictionary<string, string> DropdownCountry { get; set; } = new();
+    private Dictionary<string, string> DropdownCity { get; set; } = new();
+    private Dictionary<string, string> DropdownPlaceCategory { get; set; } = new();
+    private Dictionary<string, string> DropdownPlaceType { get; set; } = new();
+
+    [Inject] protected internal MasterDataService Data { get; set; }
+    [Inject] private IJSRuntime Js { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DropdownPlaceCategory = Data.DropdownPlaceCategory();
+        DropdownPlaceType = Data.DropdownPlaceType();
+        DropdownCountry = Data.DropdownCountry();
+        DropdownCity = Data.DropdownCityGetIso("ID");
+
+        Place.CountryId = DropdownCountry.First().Key;
+        Place.CityId = DropdownCity.First().Key;
+
+        base.OnInitialized();
+    }
+
+    private async void OnCountry(string countryId)
+    {
+        DropdownCity = Data.DropdownCityGetIso(countryId);
+        Place.CityId = DropdownCity.First().Key;
+        Place.CountryId = countryId;
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+
+    private async Task OnFilterReset()
+    {
+        await Js.InvokeVoidAsync("select2Component.onReset", "CountryId");
+        await Js.InvokeVoidAsync("select2Component.onReset", "CityId");
+        await Js.InvokeVoidAsync("select2Component.onReset", "Id");
+
+        Place.CountryId = string.Empty;
+        Place.CityId = string.Empty;
+        Place.Id = string.Empty;
+        await InvokeAsync(StateHasChanged);
+        // await GetData();
+    }
+}

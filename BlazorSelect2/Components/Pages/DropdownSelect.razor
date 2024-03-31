@@ -1,0 +1,45 @@
+﻿@typeparam TValue
+@inherits Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>
+
+<select id="@Id" class="select2 @Css" aria-label="...">
+
+
+    @if (EmptyText == "true")
+    {
+        <option @key="@string.Empty" value="@string.Empty">-NOT SET-</option>
+    }
+    else
+    {
+        @if (EmptyText == "false")
+        {
+            //Ignore
+        }
+        else
+        {
+            <option @key="@string.Empty" value="@string.Empty">-@EmptyText-</option>
+        }
+
+    }
+
+    @if (DataSource != null)
+    {
+        foreach (var item in DataSource)
+        {
+            if (item.Key == Value?.ToString())
+            {
+                <option @key="@item" value="@item.Key" selected="selected">
+                    @((MarkupString)item.Value)
+                </option>
+
+            }
+            else
+            {
+                <option @key="@item" value="@item.Key">
+                    @((MarkupString)item.Value)
+                </option>
+            }
+
+        }
+    }
+
+</select>

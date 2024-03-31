@@ -1,0 +1,119 @@
+﻿@page "/started"
+
+<h3>Started</h3>
+
+
+<div class="mb-2">
+    <b>libman.json</b>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+        {
+          "version": "1.0",
+          "defaultProvider": "cdnjs",
+          "libraries": [
+            {
+              "library": "select2-bootstrap-5-theme@1.3.0",
+              "destination": "wwwroot/lib/select2-bootstrap-5-theme/"
+            },
+            {
+              "library": "select2@4.0.13",
+              "destination": "wwwroot/lib/select2/"
+            },
+            {
+              "library": "jquery@3.7.1",
+              "destination": "wwwroot/lib/jquery/"
+            },
+            {
+              "library": "bootstrap@5.3.2",
+              "destination": "wwwroot/lib/bootstrap/"
+            },
+            {
+              "library": "bootstrap-icons@1.11.2",
+              "destination": "wwwroot/lib/bootstrap-icons/"
+            }
+          ]
+        }
+    </code>
+</pre>
+</div>
+<div class="mb-2">
+    <b>App.razor</b>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+            @apprazor
+    </code>
+</pre>
+</div>
+
+<div class="mb-2">
+    <b>app.css</b>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+
+/*select2*/
+.select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected, .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true]:not(.select2-results__option--highlighted) {
+    color: #000000;
+    background-color: #e9ecef;
+}
+
+.form-select-sm ~ .select2-container--bootstrap-5 .select2-selection {
+    min-height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    border-radius: .2rem;
+    outline: 0;
+    box-shadow: none;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field:focus {
+    border-color: #86b7fe;
+    box-shadow: none
+}
+
+.form-select-sm ~ .select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    padding: .35em .65em;
+    font-size: .675rem;
+}
+    </code>
+</pre>
+</div>
+<div class="mb-2">
+    <b>DropdownSelect.razor</b>
+    <p>No Id</p>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+            @dropdown1
+    </code>
+    </pre>
+    <p>Use Id</p>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+            @dropdown1withId
+    </code>
+    </pre>
+    <p>Use Id action </p>
+    <pre tabindex="0" class="bg-light">
+    <code class="language-html" data-lang="html">
+      private async Task OnFilterReset()
+        {
+            await Js.InvokeVoidAsync("select2Component.onReset", "CountryId");
+            await Js.InvokeVoidAsync("select2Component.onReset", "CityId");
+            await Js.InvokeVoidAsync("select2Component.onReset", "Id");
+
+            Place.CountryId = string.Empty;
+            Place.CityId = string.Empty;
+            Place.Id = string.Empty;
+            await InvokeAsync(StateHasChanged);
+            // await GetData();
+        }
+    </code>
+    </pre>
+</div>
+
+@code {
+
+    string apprazor = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n    <meta charset=\"utf-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\r\n    <base href=\"/\" />\r\n\r\n\r\n    <link rel=\"stylesheet\" href=\"lib/bootstrap-icons/font/bootstrap-icons.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/select2/css/select2.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"lib/bootstrap/css/bootstrap.min.css\" />\r\n    <link rel=\"stylesheet\" href=\"app.css\" />\r\n    <link rel=\"stylesheet\" href=\"BlazorSelect2.styles.css\" />\r\n\r\n    <link rel=\"icon\" type=\"image/png\" href=\"favicon.png\" />\r\n    <HeadOutlet @rendermode=\"InteractiveServer\" />\r\n</head>\r\n\r\n<body>\r\n\r\n    <script src=\"lib/jquery/jquery.min.js\"></script>\r\n    <script src=\"lib/bootstrap/js/bootstrap.bundle.min.js\"></script>\r\n    <script src=\"lib/select2/js/select2.full.min.js\"></script>\r\n\r\n    <Routes @rendermode=\"InteractiveServer\" />\r\n    <script src=\"_framework/blazor.web.js\"></script>\r\n</body>\r\n\r\n</html>\r\n";
+    string dropdown1 = "   <DropdownSelect @bind-Value=\"Place.CountryId\" EventDropdown=\"OnCountry\"\r\n                   DataSource=\"DropdownCountry\"\r\n                   EmptyText=\"false\"\r\n                   Css=\"form-select form-select-sm\"/>";
+    string dropdown1withId = "<DropdownSelect @bind-Value=\"Place.CountryId\" EventDropdown=\"OnCountry\"\r\n                DataSource=\"DropdownCountry\"\r\n                EmptyText=\"ALL\"\r\n                Id=\"CountryId\"\r\n                Css=\"form-select form-select-sm\" />";
+
+}
