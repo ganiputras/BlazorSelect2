@@ -10,3 +10,15 @@
 
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/e2007f51-7928-47be-906e-7a718c348c0b)
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/90e01df2-1596-43b8-a8b4-6a0beb08a964)
+
+### The tutorial on this project uses:
+- Blazor Web App
+- select2@4.0.13
+- bootstrap@5.3.2
+### How to implement select2 in a blazor project.
+- libman.json
+- App.razor
+- app.css
+- dropdown-select2.js
+- DropdownSelect.razor
+- DropdownMultiple.razor
