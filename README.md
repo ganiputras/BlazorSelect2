@@ -1,4 +1,17 @@
-# BlazorSelect2
+# The tutorial on this project uses:
+- Blazor Web App
+- select2@4.0.13
+- bootstrap@5.3.2
+# How to implement select2 in a blazor project.
+- libman.json
+- App.razor
+- app.css
+- dropdown-select2.js
+- DropdownSelect.razor
+- DropdownMultiple.razor
+
+  
+## BlazorSelect2
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/f8a40003-8a16-492f-bbe1-1b7194397413)
 ## Single
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/1fb4f8df-165a-4280-911f-2886b0448288)
@@ -22,18 +35,8 @@
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/47609a5e-3880-4ec2-9252-655de111616b)
 
 
-### The tutorial on this project uses:
-- Blazor Web App
-- select2@4.0.13
-- bootstrap@5.3.2
-### How to implement select2 in a blazor project.
-- libman.json
-- App.razor
-- app.css
-- dropdown-select2.js
-- DropdownSelect.razor
-- DropdownMultiple.razor
-### Note
+
+## Note
 if enum data is required to use callback (Dropdown Event)
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/f28fc37b-21f9-493e-9fd3-74009719060b)
 ![image](https://github.com/ganiputras/BlazorSelect2/assets/8809768/2eadb1f9-1f9b-414a-914d-72f0aa0d8739)
